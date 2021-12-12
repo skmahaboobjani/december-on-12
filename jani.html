@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+
+        display: flex;
+        background-color: brown;
+        
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<script>
+    let r=fetch("https://meme-api.herokuapp.com/gimme");
+    let s=r.then(function(response){
+        return response.json();
+
+    });
+
+    async function fn() {
+            var res= await fetch('https://meme-api.herokuapp.com/gimme');
+            var data= await res.json();
+            document.getElementById('po').innerText=data.postLink;
+            document.getElementById('su').innerText=data.subreddit;
+            document.getElementById('tit').innerText=data.title;
+            document.getElementById('url').innerText=data.url;
+            document.getElementById('n').innerText=data.nsfw;
+            document.getElementById('s').innerText=data.spoiler;
+            document.getElementById('aut').innerText=data.author;
+            document.getElementById('us').innerText=data.ups;
+            document.getElementById('pr').src=data.preview[0];
+            console.log(res);
+            
+
+        }
+
+</script>
+<body>
+    
+        <button id="b" onclick="fn()">Fetch data </button>
+    </div>
+   <div>
+    <table border="1">
+        <tr>
+            <th>postLink</th>
+            <th>subreddit</th>
+            <th>title</th>
+            <th>url</th>
+            <th>nsfw</th>
+            <th>spoiler</th>
+            <th>author</th>
+            <th>usp</th>
+            <th>preview</th>
+        </tr>
+        <tr>
+            <td><p id="po"></p></td>
+            <td><p id="su"></p></td>
+            <td><p id="tit"></p></td>
+            <td><p id="url"></p></td>
+            <td><p id="n"></p></td>
+            <td><p id="s"></p></td>
+            <td><p id="aut"></p></td>
+            <td><p id="us"></p></td>
+            <td><img src="" id="pr" alt=""></td>
+        </tr>
+    </table>
+   </div>
+</body>
+</html>
